@@ -11,6 +11,7 @@ import PageNotFound from "./views/404"
 
 
 function App() {
+  
   return (
     <React.Fragment>
         <Switch>
@@ -18,8 +19,7 @@ function App() {
           <Route 
             exact 
             path="/" 
-            render={()=>{ <Homepage />  }
-            }
+            render={()=> <Homepage /> }
           />
          
           

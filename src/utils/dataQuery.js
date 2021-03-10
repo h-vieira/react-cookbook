@@ -16,6 +16,6 @@ const getRecipe = () => {
     }
 }
 
-};
+;
 
 export default getRecipe;
