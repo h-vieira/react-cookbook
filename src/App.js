@@ -8,6 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //components
 import Homepage from "./views/home"
 import PageNotFound from "./views/404"
+import Recipe from "./views/recipe"
+import Categories from './views/library'
 
 
 function App() {
@@ -21,10 +23,12 @@ function App() {
             path="/" 
             render={()=> <Homepage /> }
           />
+
+          <Route path= "/Recipe/:id" component={Recipe}/>
+          <Route path= "/library" component={Categories}/>
          
           
-          {/* <Route path="/recipe/:id" component={recipe} />
- */}
+  
           <Route path="*" component={PageNotFound} />
 
         </Switch>

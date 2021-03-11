@@ -1,9 +1,13 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
+
+// CSS
+import {Button} from 'react-bootstrap/'
 
 //components
 import Header from '../components/header';
 import Navbar from '../components/navbar';
-import Categories from '../components/category'
+
 
 const Homepage = () => {
     return (
@@ -11,8 +15,10 @@ const Homepage = () => {
         homepage
             <Header />
             <Navbar />
+            <Link to= "./Library">
+            <Button>Categories</Button>
+            </Link>
             
-            <Categories />
         </React.Fragment>
     );
 }; 

@@ -1,10 +1,7 @@
-const Card = () =>{
-
+const RenderCard = ({recipe}) => {
     return (
-        <React.Fragment>
-
-        </React.Fragment>
+        <p>{recipe.title}</p>
     )
-};
+}
 
-export default Card;
+export default RenderCard

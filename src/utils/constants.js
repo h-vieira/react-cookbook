@@ -2,7 +2,8 @@ export const CTFULL_DATA_URL = "https://graphql.contentful.com/content/v1/spaces
 
 
 // gets all categories
-export const getCategories = `
+export const getCategories = 
+`
   {
     categoryCollection{
       items{
@@ -22,6 +23,19 @@ export const getRecipes = `
     }
   }`;
 
+// gets singel recipe by title
+export const getRecipeByTitle = (title) =>{ 
+  return (
+    `{
+      recipeCollection (where:{ title: "${title}"}) {
+        items {
+          title
+          author
+        }
+      }
+    }`
+  );
+};
 
 // gets the id of recipes in category
 export const getCategoryRecipes = (category) =>{ 
