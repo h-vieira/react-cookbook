@@ -1,25 +1,47 @@
 import fetching from '../utils/fetch'
 import {getCategories, getCategoryRecipes, getRecipesByID} from '../utils/constants'
-import {useState, useEffect} from 'react'
-import { Link, Route, Switch } from 'react-router-dom';
+import {useState, useEffect, useContext} from 'react'
+import { Link, Route, useParams } from 'react-router-dom';
+
 import RenderCategory from '../components/category'
 import RenderCard from '../components/card'
+import {BlogContext} from '../utils/context'
+
+// CSS
+import {Button, Container, Row, Col} from 'react-bootstrap/'
 
 
 const Categories = () => {
+
+    
+    const {category} = useParams()
+    console.log(category)
+
+    const {recipeCategory, setRecipeCategory} = useContext(BlogContext)
 
     const [categories, setCategories] = useState()
     const [recipeId, setRecipeID] = useState([])
     const [recipes, setRecipes] = useState([])
 
+
+
+
     useEffect(()=>{
         // gets all categories as IDs
         fetching(getCategories)
         .then(res => setCategories(res.data.categoryCollection.items))
+
+        //
+        if(recipeCategory) {
+            getId(recipeCategory)
+        }
+
+
     }, [])
 
     // gets all recipes in a category as IDs
     const getId = (categoryTitle) => {
+        setRecipeCategory(categoryTitle)
         const query = getCategoryRecipes(categoryTitle)
         fetching(query)
         .then(res => {
@@ -40,10 +62,14 @@ const Categories = () => {
         recipeId.forEach(id =>
             {getRecipeDetails(id)})
     },[recipeId])
+
+
     
 
     return (
-        <div>
+        <Container>
+        <Row>
+        <Col xs={2}>
         <h3>Categories:</h3>
         <div>
         {categories ? categories.map((category) =>
@@ -56,6 +82,8 @@ const Categories = () => {
             </Link>
             ) : '...loading'}
         </div>
+        </Col>
+        <Col xs={10} d-flex flex-wrap>
             <h3>Recipes:</h3>
         <div>
         <Route path= "/Library/:category">
@@ -68,7 +96,9 @@ const Categories = () => {
                 )}
         </Route>
         </div>
-        </div>
+        </Col>
+        </Row>
+        </Container>
     )
 }
 
