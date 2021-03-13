@@ -1,10 +1,11 @@
 import React from 'react'
+
 const Header = () =>{
 
     return (
         <React.Fragment>
-            <div className="Header">
-            Header 
+            <div className="header">
+                
                 
             </div>
         </React.Fragment>

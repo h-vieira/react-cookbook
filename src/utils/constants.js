@@ -1,8 +1,11 @@
-export const CTFULL_DATA_URL = "https://graphql.contentful.com/content/v1/spaces/kp6wmoapi8iy/explore?access_token=rj5s9hjur3wHY27I5p7NROBQbZp4GcxQcEMQ1iThM44";
+//https://graphql.contentful.com/content/v1/spaces/kp6wmoapi8iy/explore?access_token=rj5s9hjur3wHY27I5p7NROBQbZp4GcxQcEMQ1iThM44
 
+export const CTFULL_GRAPHQL_API = "https://graphql.contentful.com/content/v1/spaces/kp6wmoapi8iy/";
+export const CTFULL_ACCESS_TOKEN = "rj5s9hjur3wHY27I5p7NROBQbZp4GcxQcEMQ1iThM44";
 
 // gets all categories
-export const getCategories = `
+export const getCategories = 
+`
   {
     categoryCollection{
       items{
@@ -22,12 +25,25 @@ export const getRecipes = `
     }
   }`;
 
+// gets singel recipe by title
+export const getRecipeByTitle = (title) =>{ 
+  return (
+    `{
+      recipeCollection (where:{ title: "${title}"}) {
+        items {
+          title
+          author
+        }
+      }
+    }`
+  );
+};
 
 // gets the id of recipes in category
 export const getCategoryRecipes = (category) =>{ 
   return (
     `{
-      categoryCollection (where:{ categoryTitle: "${category}"}) {
+      categoryCollection (where:{ categoryTitle: "${ category }"}) {
         items {
           categoryRecipesCollection {
             items {
@@ -42,29 +58,35 @@ export const getCategoryRecipes = (category) =>{
 
 // gets recipe with defined id 
 export const getRecipesByID = (recipeID) => { 
+  return (`{recipeCollection(where : {sys : {id: "${recipeID}"}}) {items {title}}}`);};
+
+export const getRecipeByID = (recipeID) => {
   return (
-    `{
-      recipeCollection(where: {sys: {id: "${recipeID}"}}) {
-        items {
-          title
-        }
+    `
+    {
+      recipe(id :"${recipeID}"){
+        title
+        
       }
-    }`
-  );
+    }
+    `
+  )
 };
 
 // we retreave as many as we need
-export const getMostViewed = (many) => {
+ export const getMostViewed = (many) => {
   return (
     `{
       recipeCollection(order :views_DESC, limit:${many}) {
         items {
           title
           author
-          views
           rating
+          image{url}
+          sys{id}
         }
       }
     }`
   );
-}
+};
+export default getMostViewed;
