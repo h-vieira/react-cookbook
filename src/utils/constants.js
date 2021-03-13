@@ -4,7 +4,8 @@ export const CTFULL_GRAPHQL_API = "https://graphql.contentful.com/content/v1/spa
 export const CTFULL_ACCESS_TOKEN = "rj5s9hjur3wHY27I5p7NROBQbZp4GcxQcEMQ1iThM44";
 
 // gets all categories
-export const getCategories = `
+export const getCategories = 
+`
   {
     categoryCollection{
       items{
@@ -24,6 +25,19 @@ export const getRecipes = `
     }
   }`;
 
+// gets singel recipe by title
+export const getRecipeByTitle = (title) =>{ 
+  return (
+    `{
+      recipeCollection (where:{ title: "${title}"}) {
+        items {
+          title
+          author
+        }
+      }
+    }`
+  );
+};
 
 // gets the id of recipes in category
 export const getCategoryRecipes = (category) =>{ 

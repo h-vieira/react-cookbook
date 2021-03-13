@@ -25,6 +25,14 @@ const Recipe = ( ) =>{
     return (
         <React.Fragment>
             <Navigation />
+            {recipe ? 
+                <div>
+                <div>{recipe.title}</div>
+                <div>By: {recipe.author}</div>
+                </div>
+            
+            
+            : '...loading'}
              
         </React.Fragment>
     )
