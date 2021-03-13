@@ -1,5 +1,106 @@
 @import "~bootstrap/scss/bootstrap";
- 
+
+
+.box {
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+  min-height: 200px;
+  width: 50vw;
+  border-radius: 5px;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
 .header {
-    background-image: url('https://www.aafoodservice.com/wp-content/themes/custom-theme/img/slider-v1704.jpg');
+    height: 45vh;
+    background-image: url('./assets/images/foods-fight-plaque.jpg');
+    background-position: center;
+    background-size:cover;
+
+
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+.homeContent {
+    display: flex;
+    
+    width: 100%;
+    
+}
+
+
+.glassy{
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: rgb(255, 255, 255);
+        margin: 1rem;
+        padding: 0.2rem 0.5rem;
+        background-color: rgba(0, 0, 0, 0.225);  
+        backdrop-filter: blur(3px);
+        border-radius: 5px;
+    }
+
+.topPicks{
+    
+    &-x{
+        display: flex; 
+        flex:1;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 1.5rem 0;
+        /* margin: 2rem 10rem; */
+
+        // cards -------------------------------
+        .card {
+            &-sm{
+                @extend .box;
+                &:hover{
+                    transform: translate(0, 0.75rem);
+                    box-shadow: -0.5rem -0.75rem rgba(0, 255, 157, 0.192);
+                    transition:  0.1s ;
+                }
+                display: flex;
+                flex-direction: column;
+                justify-content:space-between ;
+                align-items: center;
+                width: 300px;
+                height: 250px;
+                box-shadow: rgb(255, 255, 255);
+                background-position: center;
+                background-size:cover;
+                .title{
+                    
+                    width: fit-content;
+                    @extend .glassy;
+                } 
+                
+                .chef{
+                    font-style: italic;
+                        
+                    @extend .glassy;
+
+                    span{
+                        margin-left: 10px;
+                    }
+                }
+                .rating{
+                    @extend .glassy;
+                }
+
+            }
+
+        }
+    }
+    &-y{
+
+    }
 }
