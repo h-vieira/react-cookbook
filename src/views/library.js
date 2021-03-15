@@ -13,9 +13,10 @@ import { BlogContext } from '../utils/context'
 
 // CSS
 import { Container, Row, Col } from 'react-bootstrap/'
+ 
 
 
-const Categories = () => {
+const Categories = ({match}) => {
 
     const {category} = useParams()
 
@@ -31,6 +32,9 @@ const Categories = () => {
         fetching(getCategories)
         .then(res => setCategories(res.data.categoryCollection.items))
 
+ 
+        // loads recipes on returning to the page
+ 
         if(recipeCategory) {
             getId(recipeCategory)
         }
@@ -62,6 +66,7 @@ const Categories = () => {
 
 
     return (
+<<<<<<< HEAD
         <React.Fragment>
             <Navigation />
             <Container>
@@ -82,19 +87,22 @@ const Categories = () => {
                     </Col>
                     <Col xs={10} d-flex flex-wrap>
                         <h3>Recipes:</h3>
-                        <div>
-                            <Route path= "/Library/:category">
-                                {recipes.map(recipe => 
-                                    <Link to={`/Recipe/${recipe.title}`}>
-                                        <RenderCard recipe={recipe}/>
-                                    </Link>
-                                    )}
-                            </Route>
-                        </div>
+                        <Route path="/Library">
+                            <div>
+                                hi
+                            </div>
+                        </Route>
+                        
+                        <Route path= "/Library/:category">
+                            {recipes.map(recipe => 
+                                <Link to={`/Recipe/${recipe.title}`}>
+                                    <RenderCard recipe={recipe}/>
+                                </Link>
+                                )}
+                        </Route>
+                         
                     </Col>
                 </Row>
-                
-
             </Container>
             <TopPicks />
         </React.Fragment>

@@ -1,10 +1,9 @@
-import React, {  useEffect } from 'react';
+ 
+import React, { useState, useEffect, useParams } from 'react';
 import Navigation from '../components/navbar'
 import getData from '../utils/apis';
 import { getRecipeByID } from '../utils/constants';
 import {  useParams } from 'react-router-dom'
-
-
 
 const Recipe = ( ) =>{
     const { id } = useParams()
@@ -19,6 +18,7 @@ const Recipe = ( ) =>{
             });
             setTop(recipe);
         } */); 
+
 
     }, [id]);
 
