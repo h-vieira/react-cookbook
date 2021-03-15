@@ -66,7 +66,7 @@ const Categories = ({match}) => {
 
 
     return (
-<<<<<<< HEAD
+
         <React.Fragment>
             <Navigation />
             <Container>
