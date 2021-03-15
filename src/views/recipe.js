@@ -25,14 +25,14 @@ const Recipe = ( ) =>{
     return (
         <React.Fragment>
             <Navigation />
-            {recipe ? 
+           {/*  {recipe ? 
                 <div>
                 <div>{recipe.title}</div>
                 <div>By: {recipe.author}</div>
                 </div>
             
             
-            : '...loading'}
+            : '...loading'} */}
              
         </React.Fragment>
     )

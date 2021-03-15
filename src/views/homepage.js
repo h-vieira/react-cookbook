@@ -19,7 +19,9 @@ const Homepage = () => {
             <Navigation />
             
             <div className="homeContent">
-                <TopPicks />
+                <div className="topPicks-x">
+                    <TopPicks />
+                </div>
 
             </div>
 
