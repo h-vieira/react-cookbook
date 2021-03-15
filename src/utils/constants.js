@@ -60,7 +60,7 @@ export const getCategoryRecipes = (category) =>{
 
 // gets recipe with defined id 
 export const getRecipesByID = (recipeID) => { 
-  return (`{recipeCollection(where : {sys : {id: "${recipeID}"}}) {items {title}}}`);};
+  return (`{recipeCollection(where : {sys : {id: "${recipeID}"}}) {items {title sys{id}}}}`);};
 
 export const getRecipeByID = (recipeID) => {
   return (

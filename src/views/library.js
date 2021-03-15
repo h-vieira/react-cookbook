@@ -95,7 +95,7 @@ const Categories = ({match}) => {
                         
                         <Route path= "/Library/:category">
                             {recipes.map(recipe => 
-                                <Link to={`/recipe/${recipe.title}`}>
+                                <Link to={`/recipe/${recipe.sys.id}`}>
                                     <RenderCard recipe={recipe}/>
                                 </Link>
                                 )}
