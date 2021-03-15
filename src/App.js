@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Homepage from "./views/homepage"
 import Recipe from "./views/recipe"
 import PageNotFound from "./views/404"
-import Recipe from "./views/recipe"
 import Categories from './views/library'
 
 

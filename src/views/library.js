@@ -2,16 +2,17 @@ import React from 'react';
 
 import fetching from '../utils/fetch'
 import {getCategories, getCategoryRecipes, getRecipesByID} from '../utils/constants'
-import {useState, useEffect, useContext} from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Link, Route, useParams } from 'react-router-dom';
 
 import Navigation from '../components/navbar';
+import TopPicks from '../components/topPicks';
 import RenderCategory from '../components/category'
 import RenderCard from '../components/card'
-import {BlogContext} from '../utils/context'
+import { BlogContext } from '../utils/context'
 
 // CSS
-import {Navbar, Button, Container, Row, Col} from 'react-bootstrap/'
+import { Container, Row, Col } from 'react-bootstrap/'
 
 
 const Categories = () => {
@@ -61,41 +62,42 @@ const Categories = () => {
 
 
     return (
-    
-        <Container>
-
+        <React.Fragment>
             <Navigation />
+            <Container>
 
-            <Row>
-                <Col xs={2}>
-                    <h3>Categories:</h3>
-                    <div>
-                        {categories ? categories.map((category) =>
-                            <Link to={`/Library/${category.categoryTitle}`} > 
-                                <div onClick={()=>{getId(category.categoryTitle)}}>
-                                    <RenderCategory category={category}/>
-                                </div>
-                            </Link>
-                        ) : '...loading'}
-                    </div>
-                </Col>
-                <Col xs={10} d-flex flex-wrap>
-                    <h3>Recipes:</h3>
-                    <div>
-                        <Route path= "/Library/:category">
-                            {recipes.map(recipe => 
-                                <Link to={`/Recipe/${recipe.title}`}>
-                                    <RenderCard recipe={recipe}/>
+
+                <Row>
+                    <Col xs={2}>
+                        <h3>Categories:</h3>
+                        <div>
+                            {categories ? categories.map((category) =>
+                                <Link to={`/Library/${category.categoryTitle}`} > 
+                                    <div onClick={()=>{getId(category.categoryTitle)}}>
+                                        <RenderCategory category={category}/>
+                                    </div>
                                 </Link>
-                                )}
-                        </Route>
-                    </div>
-                </Col>
-            </Row>
-            
-            <TopPicks />
+                            ) : '...loading'}
+                        </div>
+                    </Col>
+                    <Col xs={10} d-flex flex-wrap>
+                        <h3>Recipes:</h3>
+                        <div>
+                            <Route path= "/Library/:category">
+                                {recipes.map(recipe => 
+                                    <Link to={`/Recipe/${recipe.title}`}>
+                                        <RenderCard recipe={recipe}/>
+                                    </Link>
+                                    )}
+                            </Route>
+                        </div>
+                    </Col>
+                </Row>
+                
 
-        </Container>
+            </Container>
+            <TopPicks />
+        </React.Fragment>
     )
 }
 
