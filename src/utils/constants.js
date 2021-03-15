@@ -33,6 +33,8 @@ export const getRecipeByTitle = (title) =>{
         items {
           title
           author
+          
+          }
         }
       }
     }`
