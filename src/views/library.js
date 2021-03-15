@@ -1,7 +1,7 @@
 import React from 'react';
 
 import fetching from '../utils/fetch'
-import {getCategories, getCategoryRecipes, getRecipesByID} from '../utils/constants'
+import {getCategories, getCategoryRecipes, getRecipesByID, getAllRecipes} from '../utils/constants'
 import { useState, useEffect, useContext } from 'react'
 import { Link, Route, useParams } from 'react-router-dom';
 
@@ -56,8 +56,9 @@ const Categories = ({match}) => {
             setRecipes([])
             const query = (getRecipesByID(id))
             fetching(query)
-            .then(data => {
-                const trending = data.data.recipeCollection.items.map(items => {
+            .then(res => {
+                console.log(res.data.recipeCollection.items)
+                const libraryCards = res.data.recipeCollection.items.map(items => {
                     return {
                         img : items.image.url,
                         title: items.title,
@@ -65,16 +66,33 @@ const Categories = ({match}) => {
                         stars: items.rating,
                         id: items.sys.id                    
                     }
-                });
-                setRecipes(trending)
+                })
+                setRecipes((prev) => [...prev, libraryCards[0]])
                 
                 //setRecipes((prev)=> [...prev, data.data.recipeCollection.items[0]])
             
-                }
-                
-                
-                )}
+                })}
 
+
+    const loadAllRecipes = () => {
+        fetching(getAllRecipes())
+        .then(res => {
+            const allRecipes = res.data.recipeCollection.items.map(items => {
+                return {
+                    img : items.image.url,
+                    title: items.title,
+                    chef: items.author,
+                    stars: items.rating,
+                    id: items.sys.id                    
+                }
+        })
+        setRecipes(allRecipes)
+    })}
+
+    useEffect(()=>{
+        loadAllRecipes()
+    },[!recipes]
+    )
     
 
     useEffect(()=>{
@@ -95,7 +113,7 @@ const Categories = ({match}) => {
                         <h3>Categories:</h3>
                         <div>
                             {categories ? categories.map((category) =>
-                                <Link to={`/Library/${category.categoryTitle}`} > 
+                                <Link to={`/Library/${category.categoryTitle}`} style={{ textDecoration: 'none' }}> 
                                     <div onClick={()=>{getId(category.categoryTitle)}}>
                                         <RenderCategory category={category}/>
                                     </div>
@@ -107,16 +125,20 @@ const Categories = ({match}) => {
                         <h3>Recipes:</h3>
                         <Route path="/Library">
                             <div>
-                                hi
+                                ...
                             </div>
                         </Route>
                         
                         <Route path= "/Library/:category">
+                        <div className="d-flex flex-wrap">
                             {recipes.map(recipe => 
-                                <Link to={`/recipe/${recipe.id}`}>
+                                <Link to={`/recipe/${recipe.id}`} style={{ textDecoration: 'none' }}>
+                                <div className="m-3">
                                 <RenderSmallCard key={recipe.id} top={recipe} />
+                                </div>
                                 </Link>
                                 )}
+                        </div>
                         </Route>
                          
                     </Col>

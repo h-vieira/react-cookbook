@@ -15,15 +15,20 @@ export const getCategories =
   }`;
 
 // gets all recipes
-export const getRecipes = `
+export const getAllRecipes = () =>{
+return (
+`
   {
     recipeCollection {
       items {
         title
-        author
+      author
+      rating
+      image{url}
+      sys{id}
       }
     }
-  }`;
+  }`)};
 
 // gets singel recipe by title
 export const getRecipeByTitle = (title) =>{ 
