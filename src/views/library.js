@@ -9,6 +9,7 @@ import Navigation from '../components/navbar';
 import TopPicks from '../components/topPicks';
 import RenderCategory from '../components/category'
 import RenderCard from '../components/card'
+import RenderSmallCard from '../components/smallCard';
 import { BlogContext } from '../utils/context'
 
 // CSS
@@ -55,7 +56,24 @@ const Categories = ({match}) => {
             setRecipes([])
             const query = (getRecipesByID(id))
             fetching(query)
-            .then(data => setRecipes((prev)=> [...prev, data.data.recipeCollection.items[0]]))}
+            .then(data => {
+                const trending = data.data.recipeCollection.items.map(items => {
+                    return {
+                        img : items.image.url,
+                        title: items.title,
+                        chef: items.author,
+                        stars: items.rating,
+                        id: items.sys.id                    
+                    }
+                });
+                setRecipes(trending)
+                
+                //setRecipes((prev)=> [...prev, data.data.recipeCollection.items[0]])
+            
+                }
+                
+                
+                )}
 
     
 
@@ -95,8 +113,8 @@ const Categories = ({match}) => {
                         
                         <Route path= "/Library/:category">
                             {recipes.map(recipe => 
-                                <Link to={`/recipe/${recipe.sys.id}`}>
-                                    <RenderCard recipe={recipe}/>
+                                <Link to={`/recipe/${recipe.id}`}>
+                                <RenderSmallCard key={recipe.id} top={recipe} />
                                 </Link>
                                 )}
                         </Route>
