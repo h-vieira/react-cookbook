@@ -1,9 +1,9 @@
  
-import React, { useState, useEffect, useParams } from 'react';
-import Navigation from '../components/navbar'
+import React, { useState, useEffect } from 'react';
+import Navigation from '../components/navbar';
 import getData from '../utils/apis';
 import { getRecipeByID } from '../utils/constants';
-import {  useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom';
 
 const Recipe = ( ) =>{
     const { id } = useParams()
