@@ -128,6 +128,7 @@ const Categories = ({match}) => {
                         <Route path= "/Library/:category">
                         <div className="d-flex flex-wrap">
                             {recipes.map(recipe => 
+
                                 <Link to={`/recipe/${recipe.id}`} style={{ textDecoration: 'none' }}>
                                 <div className="m-3">
                                 <RenderSmallCard key={recipe.id} top={recipe} />

@@ -38,8 +38,10 @@ export const getRecipeByTitle = (title) =>{
         items {
           title
           author
+          sys{id}
           
           }
+
         }
       }
     }`
@@ -65,7 +67,7 @@ export const getCategoryRecipes = (category) =>{
 
 // gets recipe with defined id 
 export const getRecipesByID = (recipeID) => { 
-  return (`
+
   {
     recipeCollection(where : {sys : {id: "${recipeID}"}}) {items {
     title
@@ -76,14 +78,21 @@ export const getRecipesByID = (recipeID) => {
   }}}
   `
   );};
+ 
 
 export const getRecipeByID = (recipeID) => {
   return (
     `
     {
       recipe(id :"${recipeID}"){
+        image{url}
         title
-        
+        ingredients
+        time
+        description{json}
+        author
+        views
+        rating
       }
     }
     `

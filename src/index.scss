@@ -1,5 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
 
+@font-face {
+    font-family:"pacpac";
+    src: url("./assets/fonts/Padaloma.ttf") format("truetype");
+  }
+
+
 Link {
   text-decoration: none;
 }
@@ -13,6 +19,7 @@ Link {
     color: black;
   }
 }
+
 
 .box {
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -28,20 +35,109 @@ body::-webkit-scrollbar {
   display: none;
 }
 .header {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family:"pacpac";
+    height: 45vh;
+    background-image: url('./assets/images/foods-fight-plaque.jpg');
+    background-position: center;
+    background-size:cover;
+    font-size: 30vh;
+    text-align: center;
+    color: white;
+    letter-spacing: 2vh;
+    > div{
+        height: 35vh;
+        width:  90vw;
+        background: white;
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 35vh;
+            width:  90vw;
+            
+            background: url('./assets/images/foods-fight-plaque.jpg');
+            background-position: center;
+            background-size:100vw;
+            -webkit-text-fill-color: rgba(0, 0, 0, 0.2);
+            -webkit-background-clip: text;
+            font-weight: 900; 
+        }
+    }
+
   height: 45vh;
   background-image: url("./assets/images/foods-fight-plaque.jpg");
   background-position: center;
   background-size: cover;
+
 }
 .navbar {
   display: flex;
   justify-content: space-between;
+}
+.navbar-brand { 
+    color:red!important;
+    font-weight: 900;
+    font-size: x-large;
 }
 .homeContent {
   display: flex;
 
   width: 100%;
 }
+.recipe-view {
+    margin-bottom: 3rem;
+    width: 100vw;
+    display: flex;
+    padding: 1.5rem;
+    background: rgb(243, 243, 243);
+    .recipe{
+        display: flex;
+        flex-direction: column;
+        width:80vw;
+        .recipe-header {
+            padding: 0.5rem 1rem;
+            display: flex;
+            width: 100%;
+            font-size: 1.7rem;
+            font-weight: 700;
+            .title{
+                flex:1;
+            }
+            .time {
+                flex:1;
+            }
+        }
+        .recipe-upper-body{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            padding: 3rem 0.5rem;
+            .ingredients{
+                width: 50%;
+                padding: 2rem 0.5rem;
+                font-size: 1.5rem;
+                
+            }
+            .img{
+                flex:1;
+            }
+            .recipe-img{
+                width: 60ch;
+                height: 40ch;
+                background-position: center;
+                background-size: cover;
+            
+            }
+        }
+        .description{
+            padding: 0rem 12rem;
+            font-size: 1.5rem;
+        }
+    }
 
 .glassy {
   font-size: 1.2rem;
@@ -53,6 +149,93 @@ body::-webkit-scrollbar {
   backdrop-filter: blur(3px);
   border-radius: 5px;
 }
+
+
+}
+
+.glassy{
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: rgb(255, 255, 255);
+        margin: 1rem;
+        padding: 0.2rem 0.5rem;
+        background-color: rgba(0, 0, 0, 0.225);  
+        backdrop-filter: blur(3px);
+        border-radius: 5px;
+    }
+
+.topPicks{
+    display: flex;
+    gap: 2rem;
+    a  { text-decoration: none; }
+    padding: 1.5rem 0;
+}
+
+.topPicks{
+    
+    &-x{
+        @extend .topPicks;
+        flex:1;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    &-y{
+        @extend .topPicks;
+        flex-direction: column;
+        align-items: center;
+        width: 20vw;
+
+        .card-sm{
+            width: 200px;
+            max-height: 150px;
+             
+        }
+    }
+}   
+
+    // cards -------------------------------
+    .card {
+        &-sm{
+            @extend .box;
+            &:hover{
+                transform: translate(0, 0.75rem);
+                box-shadow: -0.5rem -0.75rem rgba(0, 255, 157, 0.192);
+                transition:  0.1s ;
+            }
+            display: flex;
+            flex-direction: column;
+            justify-content:space-between ;
+            align-items: center;
+            width: 300px;
+            height: 250px;
+            box-shadow: rgb(255, 255, 255);
+            background-position: center;
+            background-size:cover;
+            .title{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                width: fit-content;
+                @extend .glassy;
+            } 
+            
+            .chef{
+                font-style: italic;
+                    
+                @extend .glassy;
+
+                span{
+                    margin-left: 10px;
+                }
+            }
+            .rating{
+                @extend .glassy;
+            }
+
+        }
+
+    }
+    
 
 .topPicks {
   &-x {
@@ -104,3 +287,4 @@ body::-webkit-scrollbar {
     }
   }
 }
+
