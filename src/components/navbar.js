@@ -10,7 +10,7 @@ const Navigation = () => {
         <React.Fragment>
             <Navbar className="bg-light" sticky="top"  expand = "lg" >
                 <NavLink id="RouterNavLink" to="/"> 
-                    <Navbar.Brand href="#home">Home </Navbar.Brand>
+                    <Navbar.Brand href="#home">MedEat</Navbar.Brand>
                 </NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

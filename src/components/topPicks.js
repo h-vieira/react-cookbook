@@ -26,7 +26,7 @@ const RenderTopPicks = () =>{
 
     return (
         <React.Fragment>
-            { top.map((items) => ( <RenderSmallCard key={items.id} top={items} />))}
+            { top.map((alias) => ( <RenderSmallCard key={alias.id} top={alias} />))}
         </React.Fragment>
     )
 };
