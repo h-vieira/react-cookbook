@@ -28,6 +28,7 @@ const Categories = ({match}) => {
     const [recipes, setRecipes] = useState([])
 
 
+
     useEffect(()=>{
         // gets all categories as IDs
         fetching(getCategories)
@@ -35,7 +36,6 @@ const Categories = ({match}) => {
 
  
         // loads recipes on returning to the page
- 
         if(recipeCategory) {
             getId(recipeCategory)
         }
@@ -89,10 +89,14 @@ const Categories = ({match}) => {
         setRecipes(allRecipes)
     })}
 
+    
     useEffect(()=>{
+        
         loadAllRecipes()
-    },[!recipes]
-    )
+        
+
+    },[!recipes])
+
     
 
     useEffect(()=>{
@@ -111,6 +115,8 @@ const Categories = ({match}) => {
                 <Row>
                     <Col xs={2}>
                         <h3>Categories:</h3>
+
+
                         <div>
                             {categories ? categories.map((category) =>
                                 <Link to={`/Library/${category.categoryTitle}`} style={{ textDecoration: 'none' }}> 
@@ -124,6 +130,17 @@ const Categories = ({match}) => {
                     <Col xs={10} d-flex flex-wrap>
                         <h3>Recipes:</h3>
                         
+                        <Route path= "/Library/" exact>
+                        <div className="d-flex flex-wrap">
+                        {recipes.map(recipe => 
+                            <Link to={`/recipe/${recipe.id}`} style={{ textDecoration: 'none' }}>
+                            <div className="m-3">
+                            <RenderSmallCard key={recipe.id} top={recipe} />
+                            </div>
+                            </Link>
+                            )}
+                            </div>
+                        </Route>
                         
                         <Route path= "/Library/:category">
                         <div className="d-flex flex-wrap">
