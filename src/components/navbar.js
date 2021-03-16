@@ -15,6 +15,9 @@ const Navigation = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto"></Nav>
+                    <NavLink to= "./Library">
+                        <Button variant="outline-success" className="mr-sm-2">Library</Button>
+                    </NavLink>
                     <Form inline>
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                         <Button variant="outline-success">Search</Button>
