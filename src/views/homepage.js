@@ -25,9 +25,7 @@ const Homepage = () => {
 
             </div>
 
-            <Link to= "./Library">
-                <Button>Categories</Button>
-            </Link>
+            
 
         </React.Fragment>
     );

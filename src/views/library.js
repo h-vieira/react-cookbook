@@ -123,11 +123,7 @@ const Categories = ({match}) => {
                     </Col>
                     <Col xs={10} d-flex flex-wrap>
                         <h3>Recipes:</h3>
-                        <Route path="/Library">
-                            <div>
-                                ...
-                            </div>
-                        </Route>
+                        
                         
                         <Route path= "/Library/:category">
                         <div className="d-flex flex-wrap">
